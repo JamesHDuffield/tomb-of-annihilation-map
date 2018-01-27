@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,14 @@ export class AppComponent {
   water = 200;
   ointment = 100;
   raincatchers = 4;
-  terrain = '';
+  terrain = 'Jungle (No Undead)';
 
 
   terrains = [
     {
       id: 1,
       name: 'Beach',
-      encounters: [ {name: 'Aarakocra', min: 1 , max: 7 }, {name: 'Artus Cimber', min: 8 , max: 8 }, {name: 'Cache', min: 9 , max: 10 }, {name: 'Chwinga', min: 11 , max: 12 }, {name: 'Dinosaurs, allosaurus', min: 13 , max: 14 }, {name: 'Dinosaurs, dimetrodon', min: 15 , max: 16 }, {name: 'Dinosaurs, plesiosaurus', min: 17 , max: 21 }, {name: 'Dinosaurs, pteranodon', min: 22 , max: 28 }, {name: 'Dinosaurs, quetzalcoatlus', min: 29 , max: 31 }, {name: 'Dinosaurs, velociraptor', min: 32 , max: 37 }, {name: 'Dragon, red', min: 38 , max: 40 }, {name: 'Emerald Enclave', min: 41 , max: 42 }, {name: 'Explorers', min: 43 , max: 46 }, {name: 'Flaming Fist', min: 47 , max: 49 }, {name: 'Flying monkeys', min: 50 , max: 52 }, {name: 'Flying snakes', min: 53 , max: 55 }, {name: 'Frost giants', min: 56 , max: 57 }, {name: 'Giant lizards', min: 58 , max: 63 }, {name: 'Giant snapping turtle', min: 64 , max: 67 }, {name: 'Lizardfolk', min: 68 , max: 71 }, {name: 'Red Wizard', min: 72 , max: 74 }, {name: 'Sea hags', min: 75 , max: 84 }, {name: 'Stirges', min: 85 , max: 87 }, {name: 'Swarms of bats', min: 88 , max: 89 }, {name: 'Tabaxi hunter', min: 90 , max: 94 }, {name: 'Tri-flower frond', min: 95 , max: 100 }]
+      encounter: [ {name: 'Aarakocra', min: 1 , max: 7 }, {name: 'Artus Cimber', min: 8 , max: 8 }, {name: 'Cache', min: 9 , max: 10 }, {name: 'Chwinga', min: 11 , max: 12 }, {name: 'Dinosaurs, allosaurus', min: 13 , max: 14 }, {name: 'Dinosaurs, dimetrodon', min: 15 , max: 16 }, {name: 'Dinosaurs, plesiosaurus', min: 17 , max: 21 }, {name: 'Dinosaurs, pteranodon', min: 22 , max: 28 }, {name: 'Dinosaurs, quetzalcoatlus', min: 29 , max: 31 }, {name: 'Dinosaurs, velociraptor', min: 32 , max: 37 }, {name: 'Dragon, red', min: 38 , max: 40 }, {name: 'Emerald Enclave', min: 41 , max: 42 }, {name: 'Explorers', min: 43 , max: 46 }, {name: 'Flaming Fist', min: 47 , max: 49 }, {name: 'Flying monkeys', min: 50 , max: 52 }, {name: 'Flying snakes', min: 53 , max: 55 }, {name: 'Frost giants', min: 56 , max: 57 }, {name: 'Giant lizards', min: 58 , max: 63 }, {name: 'Giant snapping turtle', min: 64 , max: 67 }, {name: 'Lizardfolk', min: 68 , max: 71 }, {name: 'Red Wizard', min: 72 , max: 74 }, {name: 'Sea hags', min: 75 , max: 84 }, {name: 'Stirges', min: 85 , max: 87 }, {name: 'Swarms of bats', min: 88 , max: 89 }, {name: 'Tabaxi hunter', min: 90 , max: 94 }, {name: 'Tri-flower frond', min: 95 , max: 100 }]
     }, 
     { id: 2,
       name: 'Jungle (No Undead)',
@@ -91,14 +92,17 @@ export class AppComponent {
   }
 
   lookupEncounter() {
-
+    const roll = this.rollDX(100);
+    const currentTerrain = _.find(this.terrains, terrain => this.terrain);
+    const enc = _.find(currentTerrain.encounter, encounter => roll >= encounter.min && roll <= encounter.max)
+    console.log(`Got Encounter: ${enc.name}`);
+    return enc.name;
   }
 
   rollForEncounter() {
     if (this.rollDX(20) >= 18) {
       console.log("Got Encounter");
-      this.encounter = this.rollDX(100).toString();
-      return 
+      this.encounter = this.lookupEncounter()
     }
   }
 
@@ -107,7 +111,9 @@ export class AppComponent {
     this.encounter = '';
     this.rain='';
 
-    
+    this.rollForEncounter();
+    this.rollForEncounter();
+    this.rollForEncounter();
 
     if (this.rollDX(4) == 4) {
       console.log("Rain");
