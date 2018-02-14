@@ -18,13 +18,12 @@ export class AppComponent {
   raincatchers = 4;
   terrain = 'Jungle (No Undead)';
 
-
   terrains = [
     {
       id: 1,
       name: 'Beach',
       encounter: [ {name: 'Aarakocra', min: 1 , max: 7 }, {name: 'Artus Cimber', min: 8 , max: 8 }, {name: 'Cache', min: 9 , max: 10 }, {name: 'Chwinga', min: 11 , max: 12 }, {name: 'Dinosaurs, allosaurus', min: 13 , max: 14 }, {name: 'Dinosaurs, dimetrodon', min: 15 , max: 16 }, {name: 'Dinosaurs, plesiosaurus', min: 17 , max: 21 }, {name: 'Dinosaurs, pteranodon', min: 22 , max: 28 }, {name: 'Dinosaurs, quetzalcoatlus', min: 29 , max: 31 }, {name: 'Dinosaurs, velociraptor', min: 32 , max: 37 }, {name: 'Dragon, red', min: 38 , max: 40 }, {name: 'Emerald Enclave', min: 41 , max: 42 }, {name: 'Explorers', min: 43 , max: 46 }, {name: 'Flaming Fist', min: 47 , max: 49 }, {name: 'Flying monkeys', min: 50 , max: 52 }, {name: 'Flying snakes', min: 53 , max: 55 }, {name: 'Frost giants', min: 56 , max: 57 }, {name: 'Giant lizards', min: 58 , max: 63 }, {name: 'Giant snapping turtle', min: 64 , max: 67 }, {name: 'Lizardfolk', min: 68 , max: 71 }, {name: 'Red Wizard', min: 72 , max: 74 }, {name: 'Sea hags', min: 75 , max: 84 }, {name: 'Stirges', min: 85 , max: 87 }, {name: 'Swarms of bats', min: 88 , max: 89 }, {name: 'Tabaxi hunter', min: 90 , max: 94 }, {name: 'Tri-flower frond', min: 95 , max: 100 }]
-    }, 
+    },
     { id: 2,
       name: 'Jungle (No Undead)',
       encounter: [ {name: 'Albino dwarves', min: 1 , max: 1 }, {name: 'Almiraj', min: 2 , max: 2 }, {name: 'Apes', min: 3 , max: 4 }, {name: 'Artus Cimber', min: 5 , max: 5 }, {name: 'Assassin vines', min: 6 , max: 7 }, {name: 'Axe beaks', min: 8 , max: 8 }, {name: 'Baboons', min: 9 , max: 9 }, {name: 'Cache', min: 10 , max: 11 }, {name: 'Cannibals', min: 12 , max: 13 }, {name: 'Chwinga', min: 14 , max: 15 }, {name: 'Cyclops', min: 16 , max: 16 }, {name: 'Dinosaurs, allosaurus', min: 17 , max: 17 }, {name: 'Dinosaurs, ankylosaurus', min: 18 , max: 18 }, {name: 'Dinosaurs, brontosaurus', min: 19 , max: 19 }, {name: 'Dinosaurs, deinonychus', min: 20 , max: 21 }, {name: 'Dinosaurs, hadrosaurus', min: 22 , max: 23 }, {name: 'Dinosaurs, pteranodon', min: 24 , max: 24 }, {name: 'Dinosaurs, stegosaurus', min: 25 , max: 26 }, {name: 'Dinosaurs, triceratops', min: 27 , max: 28 }, {name: 'Dinosaurs, tyrannosaurus', min: 29 , max: 30 }, {name: 'Dinosaurs, velociraptor', min: 31 , max: 35 }, {name: 'Dragon, faerie', min: 36 , max: 36 }, {name: 'Eblis', min: 37 , max: 37 }, {name: 'Emerald Enclave', min: 38 , max: 42 }, {name: 'Explorer, dead', min: 43 , max: 44 }, {name: 'Explorers', min: 45 , max: 45 }, {name: 'Flail snail', min: 46 , max: 46 }, {name: 'Flaming Fist', min: 47 , max: 50 }, {name: 'Flying monkeys', min: 51 , max: 51 }, {name: 'Flying snakes', min: 52 , max: 53 }, {name: 'Frost giants', min: 54 , max: 55 }, {name: 'Giant boars', min: 56 , max: 56 }, {name: 'Giant frogs', min: 57 , max: 57 }, {name: 'Giant lizards', min: 58 , max: 58 }, {name: 'Giant scorpions', min: 59 , max: 59 }, {name: 'Giant wasps', min: 60 , max: 60 }, {name: 'Girallons', min: 61 , max: 62 }, {name: 'Goblins', min: 63 , max: 64 }, {name: 'Grungs', min: 65 , max: 66 }, {name: 'Jaculis', min: 67 , max: 67 }, {name: 'Kamadans', min: 68 , max: 68 }, {name: 'Lizardfolk', min: 69 , max: 70 }, {name: 'Mad monkey mist', min: 71 , max: 72 }, {name: 'Mantraps', min: 73 , max: 73 }, {name: 'Night hag', min: 74 , max: 74 }, {name: 'Pterafolk', min: 75 , max: 75 }, {name: 'Rare plant(s)', min: 76 , max: 76 }, {name: 'Red Wizard', min: 77 , max: 77 }, {name: 'Snake, constrictor', min: 78 , max: 79 }, {name: 'Snake, giant constrictor', min: 80 , max: 80 }, {name: 'Snake, giant poisonous', min: 81 , max: 81 }, {name: 'Spiders', min: 82 , max: 82 }, {name: 'Statue of Ubtao', min: 83 , max: 85 }, {name: 'Stirges', min: 86 , max: 86 }, {name: 'Su-monsters', min: 87 , max: 87 }, {name: 'Swarms of bats', min: 88 , max: 88 }, {name: 'Swarms of insects', min: 89 , max: 89 }, {name: 'Tabaxi hunter', min: 90 , max: 90 }, {name: 'Tiger', min: 91 , max: 91 }, {name: 'Tri-flower frond', min: 92 , max: 92 }, {name: 'Vegepygmies', min: 93 , max: 93 }, {name: 'Wereboar', min: 94 , max: 94 }, {name: 'Weretiger', min: 95 , max: 95 }, {name: 'Winterscape', min: 96 , max: 96 }, {name: 'Yellow musk creeper and zombies', min: 97 , max: 97 }, {name: 'Yuan-ti', min: 98 , max: 98 }, {name: 'Zhentarim', min: 99 , max: 99 }, {name: 'Zorbos', min: 100 , max: 100 }, ]
@@ -56,9 +55,7 @@ export class AppComponent {
        name: 'Swamp',
        encounter: [ {name: 'Aldani', min: 1 , max: 10 }, {name: 'Artus Cimber', min: 11 , max: 11 }, {name: 'Assassin vines', min: 12 , max: 14 }, {name: 'Chwinga', min: 15 , max: 16 }, {name: 'Crocodiles', min: 17 , max: 21 }, {name: 'Dinosaurs, allosaurus', min: 22 , max: 22 }, {name: 'Dinosaurs, ankylosaurus', min: 23 , max: 23 }, {name: 'Dinosaurs, brontosaurus', min: 24 , max: 25 }, {name: 'Dinosaurs, dimetrodon', min: 26 , max: 30 }, {name: 'Dinosaurs, hadrosaurus', min: 31 , max: 33 }, {name: 'Dinosaurs, pteranodon', min: 34 , max: 35 }, {name: 'Eblis', min: 36 , max: 39 }, {name: 'Explorer, dead', min: 40 , max: 41 }, {name: 'Explorers', min: 42 , max: 45 }, {name: 'Flail snail', min: 46 , max: 47 }, {name: 'Flying snakes', min: 48 , max: 50 }, {name: 'Giant crocodile', min: 51 , max: 53 }, {name: 'Giant frogs', min: 54 , max: 56 }, {name: 'Giant lizards', min: 57 , max: 58 }, {name: 'Giant snapping turtle', min: 59 , max: 60 }, {name: 'Giant wasps', min: 61 , max: 62 }, {name: 'Grungs', min: 63 , max: 64 }, {name: 'Lizardfolk', min: 65 , max: 66 }, {name: 'Mad monkey mist', min: 67 , max: 69 }, {name: 'Mephits', min: 70 , max: 70 }, {name: 'Night hag', min: 71 , max: 71 }, {name: 'Rare plant(s)', min: 72 , max: 72 }, {name: 'Shambling mound', min: 73 , max: 76 }, {name: 'Snake, constrictor', min: 77 , max: 80 }, {name: 'Snake, giant constrictor', min: 81 , max: 82 }, {name: 'Statue of Ubtao', min: 83 , max: 85 }, {name: 'Stirges', min: 86 , max: 87 }, {name: 'Swarms of bats', min: 88 , max: 89 }, {name: 'Swarms of insects', min: 90 , max: 94 }, {name: 'Undead, ghouls', min: 95 , max: 95 }, {name: 'Undead, skeletons', min: 96 , max: 97 }, {name: 'Undead, zombies', min: 98 , max: 98 }, {name: 'Yellow musk creeper and zombies', min: 99 , max: 99 }, {name: 'Yuan-ti', min: 100 , max: 100 } ]
      },
-     { 
-
-
+     {
        id: 9,
        name: 'Wasteland',
        encounter: [ {name: 'Artus Cimber', min: 1 , max: 1 }, {name: 'Cache', min: 2 , max: 5 }, {name: 'Dragon, red', min: 6 , max: 9 }, {name: 'Explorer, dead', min: 10 , max: 18 }, {name: 'Explorers', min: 19 , max: 19 }, {name: 'Firenewts', min: 20 , max: 37 }, {name: 'Giant scorpions', min: 38 , max: 45 }, {name: 'Magmins', min: 46 , max: 54 }, {name: 'Mephits', min: 55 , max: 71 }, {name: 'Night hag', min: 72 , max: 78 }, {name: 'Statue of Ubtao', min: 79 , max: 79 }, {name: 'Troll', min: 80 , max: 83 }, {name: 'Undead, ghouls', min: 84 , max: 85 }, {name: 'Undead, skeletons', min: 86 , max: 95 }, {name: 'Undead, wight', min: 96 , max: 97 }, {name: 'Undead, zombies', min: 98 , max: 98 }, {name: 'Zhentarim', min: 99 , max: 100 } ]
@@ -72,11 +69,10 @@ export class AppComponent {
   constructor() {
     for (let x = 0; x < this.width; x++) {
       this.grid.push([]);
-      for (let y = 0; y< this.height; y++) {
+      for (let y = 0; y < this.height; y++) {
         this.grid[x].push(Math.random() >= 0.5);
       }
     }
-    if(this.frank) { console.log("if is a function"); }
   }
 
   rollDX(x: number) {
@@ -94,33 +90,31 @@ export class AppComponent {
   lookupEncounter() {
     const roll = this.rollDX(100);
     const currentTerrain = _.find(this.terrains, terrain => this.terrain);
-    const enc = _.find(currentTerrain.encounter, encounter => roll >= encounter.min && roll <= encounter.max)
+    const enc = _.find(currentTerrain.encounter, encounter => roll >= encounter.min && roll <= encounter.max);
     console.log(`Got Encounter: ${enc.name}`);
     return enc.name;
   }
 
   rollForEncounter() {
     if (this.rollDX(20) >= 18) {
-      console.log("Got Encounter");
-      this.encounter = this.lookupEncounter()
+      console.log('Got Encounter');
+      this.encounter = this.lookupEncounter();
     }
   }
 
   endDay() {
-    console.log("End day");
+    console.log('End day');
     this.encounter = '';
-    this.rain='';
+    this.rain = '';
 
     this.rollForEncounter();
     this.rollForEncounter();
     this.rollForEncounter();
 
-    if (this.rollDX(4) == 4) {
-      console.log("Rain");
-      this.rain = 'Heavy Rain'
+    if (this.rollDX(4) === 4) {
+      console.log('Rain');
+      this.rain = 'Heavy Rain';
     }
-
-    
   }
 
 

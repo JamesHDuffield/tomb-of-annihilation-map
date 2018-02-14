@@ -1,27 +1,59 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div style="text-align:center" class="container">
   <h1>
     Travel to the Tomb of Annihilation
   </h1>
-  <div>
-    Party Members: <input [(ngModel)]="partyMembers"><br>
-    Food stores: <input [(ngModel)]="food"> days rations<br>
-    Water stores: <input [(ngModel)]="water"> gallons<br>
-    Insect ointment: <input [(ngModel)]="ointment"> applications<br>
-    Raincatchers: <input [(ngModel)]="raincatchers"><br>
-    <hr>
-    Rain: {{ rain }}<br>
-    Encounter: {{ encounter }}<br>
-    <input type="button" value="End Day" (click)="endDay()">
+  <hr>
+  <div class="row">
+    <div class="col-sm-4 text-left">Party Members: </div>
+    <div class="col-sm-8 text-left">
+      <input [(ngModel)]="partyMembers" type="number">
+    </div>
   </div>
+  <div class="row">
+    <div class="col-sm-4 text-left">Food stores: </div>
+    <div class="col-sm-8 text-left">
+      <input [(ngModel)]="food" type="number"> days rations
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 text-left">Water stores: </div>
+    <div class="col-sm-8 text-left">
+      <input [(ngModel)]="water" type="number"> gallons
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 text-left">Insect ointment: </div>
+    <div class="col-sm-8 text-left">
+      <input [(ngModel)]="ointment" type="number"> applications
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 text-left">Raincatchers: </div>
+    <div class="col-sm-8 text-left">
+      <input [(ngModel)]="raincatchers" type="number">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-4 text-left">Rain: </div>
+    <div class="col-sm-8 text-left">{{ rain }}</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4 text-left">Encounters: </div>
+    <div class="col-sm-8 text-left">
+      {{ encounter }}
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-sm-12">
+          <input type="button" class="btn" value="End Day" (click)="endDay()">
+      </div>
+  </div>
+  <hr>
   <div>
     <img height="1200" alt="Angular Logo" src="assets/dm.jpg">
-    <div *ngFor="let row of grid; let x = index">
-      <div *ngFor="let cell of row; let y= index">
-        {{x}} {{y}} {{ cell }}
-      </div>
-    </div>
   </div>
 
 </div>
-
