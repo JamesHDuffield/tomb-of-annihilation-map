@@ -30,6 +30,7 @@ export class AppComponent {
     top: 102,
     left: 96
   };
+  pace = 'normal';
 
   terrains = [
     {
@@ -149,7 +150,11 @@ export class AppComponent {
     }
   }
 
-  endDay(pace: string = 'normal') {
+  changePace(pace: string) {
+    this.pace = pace;
+  }
+
+  endDay() {
     this.alerts = [];
     // Encounters
     this.encounters = [];
@@ -184,8 +189,8 @@ export class AppComponent {
     // Survival
     const roll = this.rollDX(20) + this.survival;
     let DC = this.currentTerrain().difficulty;
-    if (pace === 'slow') { DC -= 5; }
-    if (pace === 'fast') { DC += 5; }
+    if (this.pace === 'slow') { DC -= 5; }
+    if (this.pace === 'fast') { DC += 5; }
     if (roll < DC) {
       // Lost
       const direction = this.rollDX(6);
@@ -193,9 +198,9 @@ export class AppComponent {
     }
     // Movement
     let movement = 1;
-    if (pace === 'fast' && this.rollDX(4) >= 3) {
+    if (this.pace === 'fast' && this.rollDX(4) >= 3) {
       movement++;
-    } else if (pace === 'slow' && this.rollDX(4) <= 2) {
+    } else if (this.pace === 'slow' && this.rollDX(4) <= 2) {
       movement--;
     }
     if (this.canoe) {

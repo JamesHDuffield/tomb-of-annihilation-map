@@ -61,11 +61,26 @@
   <hr>
   <div class="row">
       <div class="col-sm-12">
-          <input type="button" class="btn" value="End Day (Slow pace)" (click)="endDay('slow')">
-          <input type="button" class="btn" value="End Day" (click)="endDay('normal')">
-          <input type="button" class="btn" value="End Day (Fast pace)" (click)="endDay('fast')">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'slow'" value="Slow pace" (click)="changePace('slow')">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'normal'" value="Normal pace" (click)="changePace('normal')">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'fast'" value="Fast pace" (click)="changePace('fast')">
       </div>
   </div>
+  <hr>
+  <div class="row">
+      <div class="col-sm-12">
+          <input type="button" class="btn" [class.btn-primary]="!canoe" value="No Canoe" (click)="canoe = false">
+          <input type="button" class="btn" [class.btn-primary]="canoe" value="With Canoe" (click)="canoe = true">
+      </div>
+  </div>
+  <hr>
+  <div class="row">
+      <div class="col-sm-12">
+          <input *ngFor="let t of terrains" type="button" class="btn" [class.btn-primary]="t.name === terrain" [value]="t.name" (click)="terrain = t.name">
+      </div>
+  </div>
+  <hr>
+  <input type="button" class="btn" value="End Day" (click)="endDay('normal')">
   <hr>
   <div class="text-left">
     <div class="icon-position" [style.top]="baseHex.top + (position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (position.x * hexWidth) + 'px'">
