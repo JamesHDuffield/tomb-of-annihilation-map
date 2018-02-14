@@ -3,6 +3,12 @@
   <h1>
     Travel to the Tomb of Annihilation
   </h1>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="alert alert-danger" role="alert" *ngFor='let alert of alerts'>{{ alert }}</div>
+    </div>
+
+  </div>
   <hr>
   <div class="row">
     <div class="col-sm-4 text-left">Party Members: </div>
@@ -13,7 +19,7 @@
   <div class="row">
     <div class="col-sm-4 text-left">Food stores: </div>
     <div class="col-sm-8 text-left">
-      <input [(ngModel)]="food" type="number"> days rations
+      <input [(ngModel)]="food" type="number"> rations
     </div>
   </div>
   <div class="row">
@@ -34,6 +40,12 @@
       <input [(ngModel)]="raincatchers" type="number">
     </div>
   </div>
+  <div class="row">
+      <div class="col-sm-4 text-left">Survival Modifier: </div>
+      <div class="col-sm-8 text-left">
+        <input [(ngModel)]="survival" type="number"> bonus
+      </div>
+    </div>
   <hr>
   <div class="row">
     <div class="col-sm-4 text-left">Rain: </div>
@@ -49,7 +61,9 @@
   <hr>
   <div class="row">
       <div class="col-sm-12">
-          <input type="button" class="btn" value="End Day" (click)="endDay()">
+          <input type="button" class="btn" value="End Day (Slow pace)" (click)="endDay('slow')">
+          <input type="button" class="btn" value="End Day" (click)="endDay('normal')">
+          <input type="button" class="btn" value="End Day (Fast pace)" (click)="endDay('fast')">
       </div>
   </div>
   <hr>
