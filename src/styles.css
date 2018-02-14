@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.icon-red {
+  color: red;
+  font-size: 12px;
+}
+
+.icon-position {
+  position: relative;
+  z-index: 100;
+}

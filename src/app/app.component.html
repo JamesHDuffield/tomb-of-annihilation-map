@@ -67,7 +67,10 @@
       </div>
   </div>
   <hr>
-  <div>
+  <div class="text-left">
+    <div class="icon-position" [style.top]="baseHex.top + (position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (position.x * hexWidth) + 'px'">
+        <i class="fa fa-times icon-red icon-position"></i>
+    </div>
     <img height="1200" alt="Angular Logo" src="assets/dm.jpg">
   </div>
 

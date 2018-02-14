@@ -20,6 +20,16 @@ export class AppComponent {
   terrain = 'Jungle (No Undead)';
   survival = 3;
   canoe = false;
+  hexHeight = 13 / 2;
+  hexWidth = 11.15;
+  position = {
+    y: 0,
+    x: 0
+  };
+  baseHex = {
+    top: 102,
+    left: 96
+  };
 
   terrains = [
     {
@@ -113,6 +123,32 @@ export class AppComponent {
     }
   }
 
+  moveDirection(direction: number) {
+    switch (direction) {
+      case 1: // North
+        this.position.y -= 2;
+        return;
+      case 2: // North-east
+        this.position.y -= 1;
+        this.position.x += 1;
+        return;
+      case 3: // South-east
+        this.position.y += 1;
+        this.position.x += 1;
+        return;
+      case 4: // South
+        this.position.y += 2;
+        return;
+      case 5: // South-west
+        this.position.y += 1;
+        this.position.x -= 1;
+        return;
+      case 6:
+        this.position.y -= 1;
+        this.position.x -= 1;
+    }
+  }
+
   endDay(pace: string = 'normal') {
     this.alerts = [];
     // Encounters
@@ -166,7 +202,7 @@ export class AppComponent {
       movement++;
     }
     // TODO move on grid
-
+    this.moveDirection(3);
   }
 
 
