@@ -61,10 +61,8 @@ export class AppComponent {
        encounter: [ {name: 'Artus Cimber', min: 1 , max: 1 }, {name: 'Cache', min: 2 , max: 5 }, {name: 'Dragon, red', min: 6 , max: 9 }, {name: 'Explorer, dead', min: 10 , max: 18 }, {name: 'Explorers', min: 19 , max: 19 }, {name: 'Firenewts', min: 20 , max: 37 }, {name: 'Giant scorpions', min: 38 , max: 45 }, {name: 'Magmins', min: 46 , max: 54 }, {name: 'Mephits', min: 55 , max: 71 }, {name: 'Night hag', min: 72 , max: 78 }, {name: 'Statue of Ubtao', min: 79 , max: 79 }, {name: 'Troll', min: 80 , max: 83 }, {name: 'Undead, ghouls', min: 84 , max: 85 }, {name: 'Undead, skeletons', min: 86 , max: 95 }, {name: 'Undead, wight', min: 96 , max: 97 }, {name: 'Undead, zombies', min: 98 , max: 98 }, {name: 'Zhentarim', min: 99 , max: 100 } ]
      }];
 
-  rain = '';
-  encounter = '';
-
-  frank = true;
+  rain = 'Light';
+  encounters = [];
 
   constructor() {
     for (let x = 0; x < this.width; x++) {
@@ -91,29 +89,26 @@ export class AppComponent {
     const roll = this.rollDX(100);
     const currentTerrain = _.find(this.terrains, terrain => this.terrain);
     const enc = _.find(currentTerrain.encounter, encounter => roll >= encounter.min && roll <= encounter.max);
-    console.log(`Got Encounter: ${enc.name}`);
     return enc.name;
   }
 
-  rollForEncounter() {
+  rollForEncounter(timeframe: string) {
     if (this.rollDX(20) >= 18) {
-      console.log('Got Encounter');
-      this.encounter = this.lookupEncounter();
+      this.encounters.push(`${timeframe}: ${this.lookupEncounter()}`);
     }
   }
 
   endDay() {
-    console.log('End day');
-    this.encounter = '';
-    this.rain = '';
+    this.encounters = [];
 
-    this.rollForEncounter();
-    this.rollForEncounter();
-    this.rollForEncounter();
+    this.rollForEncounter('Morning');
+    this.rollForEncounter('Afternoon');
+    this.rollForEncounter('Evening');
 
     if (this.rollDX(4) === 4) {
-      console.log('Rain');
-      this.rain = 'Heavy Rain';
+      this.rain = 'Heavy';
+    } else {
+      this.rain = 'Light';
     }
   }
 
