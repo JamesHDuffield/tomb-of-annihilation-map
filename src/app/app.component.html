@@ -1,135 +1,124 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center" class="container">
-  <h1>
-    Travel to the Tomb of Annihilation
-  </h1>
+<div class="container page-container">
   <div class="row">
-    <div class="col-sm-12">
-      <div class="alert alert-danger" role="alert" *ngFor='let alert of alerts'>{{ alert }}</div>
-    </div>
-
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-sm-4 text-left">Party Members: </div>
-    <div class="col-sm-8 text-left">
-      <input [(ngModel)]="partyMembers" type="number">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-left">Food stores: </div>
-    <div class="col-sm-8 text-left">
-      <input [(ngModel)]="food" type="number"> rations
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-left">Water stores: </div>
-    <div class="col-sm-8 text-left">
-      <input [(ngModel)]="water" type="number"> gallons
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-left">Insect ointment: </div>
-    <div class="col-sm-8 text-left">
-      <input [(ngModel)]="ointment" type="number"> applications
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-left">Raincatchers: </div>
-    <div class="col-sm-8 text-left">
-      <input [(ngModel)]="raincatchers" type="number">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-left">Survival Modifier: </div>
-    <div class="col-sm-8 text-left">
-      <input [(ngModel)]="survival" type="number"> bonus
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-sm-4 text-left">Rain: </div>
-    <div class="col-sm-8 text-left">{{ rain }}</div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 text-left">Encounters: </div>
-    <div class="col-sm-8 text-left">
-      <div *ngIf='!encounters.length'>No encounters
-        <br>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-sm-4 text-left">Party Members: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="partyMembers" type="number">
+        </div>
       </div>
-      <div *ngFor='let encounter of encounters'>{{ encounter }}
-        <br>
+      <div class="row">
+        <div class="col-sm-4 text-left">Food stores: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="food" type="number"> rations
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Water stores: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="water" type="number"> gallons
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Insect ointment: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="ointment" type="number"> applications
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Raincatchers: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="raincatchers" type="number">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Survival Modifier: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="survival" type="number"> bonus
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-4 text-left">Rain: </div>
+        <div class="col-sm-8 text-left">{{ rain }}</div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Encounters: </div>
+        <div class="col-sm-8 text-left">
+          <div *ngIf='!encounters.length'>No encounters
+            <br>
+          </div>
+          <div *ngFor='let encounter of encounters'>{{ encounter }}
+            <br>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'slow'" value="Slow pace" (click)="changePace('slow')">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'normal'" value="Normal pace" (click)="changePace('normal')">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'fast'" value="Fast pace" (click)="changePace('fast')">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          <input type="button" class="btn" [class.btn-primary]="!canoe" value="No Canoe" (click)="canoe = false">
+          <input type="button" class="btn" [class.btn-primary]="canoe" value="With Canoe" (click)="canoe = true">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          <input *ngFor="let t of terrains" type="button" class="btn btn-margins" [class.btn-primary]="t.name === terrain" [value]="t.name"
+            (click)="terrain = t.name">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <button class="btn btn-margins" (click)="endDay(6)">
+            <i class="fa fa-arrow-up fa-rotate--60"></i>
+          </button>
+          <button class="btn btn-margins btn-bump-up" (click)="endDay(1)">
+            <i class="fa fa-arrow-up"></i>
+          </button>
+          <button class="btn btn-margins" (click)="endDay(2)">
+            <i class="fa fa-arrow-up fa-rotate-60"></i>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <button class="btn btn-margins" (click)="endDay(5)">
+            <i class="fa fa-arrow-up fa-rotate--120"></i>
+          </button>
+          <button class="btn btn-margins btn-bump-down" (click)="endDay(4)">
+            <i class="fa fa-arrow-up fa-rotate-180"></i>
+          </button>
+          <button class="btn btn-margins" (click)="endDay(3)">
+            <i class="fa fa-arrow-up fa-rotate-120"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="wrapper">
+        <div class="text-left map-container" [style.left]="-(position.x * hexWidth) + 'px'" [style.top]="-(position.y * hexHeight) + 'px'"
+          [style.zoom]="mapZoom">
+          <div class="icon-position" [style.top]="baseHex.top + (position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (position.x * hexWidth) + 'px'">
+            <i class="fa fa-times icon-red icon-position"></i>
+          </div>
+          <img height="1200" alt="Angular Logo" src="assets/dm.jpg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-danger" role="alert" *ngFor='let alert of alerts'>{{ alert }}</div>
+        </div>
       </div>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-sm-12">
-      <input type="button" class="btn" [class.btn-primary]="pace === 'slow'" value="Slow pace" (click)="changePace('slow')">
-      <input type="button" class="btn" [class.btn-primary]="pace === 'normal'" value="Normal pace" (click)="changePace('normal')">
-      <input type="button" class="btn" [class.btn-primary]="pace === 'fast'" value="Fast pace" (click)="changePace('fast')">
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-sm-12">
-      <input type="button" class="btn" [class.btn-primary]="!canoe" value="No Canoe" (click)="canoe = false">
-      <input type="button" class="btn" [class.btn-primary]="canoe" value="With Canoe" (click)="canoe = true">
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-sm-12">
-      <input *ngFor="let t of terrains" type="button" class="btn" [class.btn-primary]="t.name === terrain" [value]="t.name" (click)="terrain = t.name">
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-xs-4">
-      <button class="btn" (click)="endDay(6)">
-        <i class="fa fa-arrow-up fa-rotate--60"></i>
-      </button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn" (click)="endDay(1)">
-        <i class="fa fa-arrow-up"></i>
-      </button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn" (click)="endDay(2)">
-        <i class="fa fa-arrow-up fa-rotate-60"></i>
-      </button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-4">
-      <button class="btn" (click)="endDay(5)">
-        <i class="fa fa-arrow-up fa-rotate--120"></i>
-      </button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn" (click)="endDay(4)">
-        <i class="fa fa-arrow-up fa-rotate-180"></i>
-      </button>
-    </div>
-    <div class="col-xs-4">
-      <button class="btn" (click)="endDay(3)">
-        <i class="fa fa-arrow-up fa-rotate-120"></i>
-      </button>
-    </div>
-  </div>
-  <hr>
-  <input type="button" class="btn" value="End Day" (click)="endDay('normal')">
-  <hr>
-  <div class="wrapper">
-    <div class="text-left map-container" [style.left]="-(position.x * hexWidth) + 'px'" [style.top]="-(position.y * hexHeight) + 'px'"  [style.zoom]="mapZoom">
-      <div class="icon-position" [style.top]="baseHex.top + (position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (position.x * hexWidth) + 'px'">
-        <i class="fa fa-times icon-red icon-position"></i>
-      </div>
-      <img height="1200" alt="Angular Logo" src="assets/dm.jpg">
-    </div>
-  </div>
-  <hr>
-
-
 </div>

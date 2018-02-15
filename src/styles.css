@@ -42,11 +42,29 @@
 }
 
 .wrapper {
-  width: 1000px;
-  height: 1000px;
+  width: 500px;
+  height: 500px;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .map-container {
   position: relative;
+}
+
+.page-container {
+  margin-top: 15px;
+}
+
+.btn-margins {
+  margin-right: 3px;
+  margin-bottom: 3px;
+}
+
+.btn-bump-up {
+  margin-bottom: 15px;
+}
+
+.btn-bump-down {
+  margin-top: 15px;
 }
