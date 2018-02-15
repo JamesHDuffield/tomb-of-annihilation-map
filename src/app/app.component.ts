@@ -154,7 +154,7 @@ export class AppComponent {
     this.pace = pace;
   }
 
-  endDay() {
+  endDay(desiredDirection: number) {
     this.alerts = [];
     // Encounters
     this.encounters = [];
@@ -191,9 +191,11 @@ export class AppComponent {
     let DC = this.currentTerrain().difficulty;
     if (this.pace === 'slow') { DC -= 5; }
     if (this.pace === 'fast') { DC += 5; }
+
+    let direction = desiredDirection;
     if (roll < DC) {
       // Lost
-      const direction = this.rollDX(6);
+      direction = this.rollDX(6);
       this.alerts.push(`Navigation failed and the players are lost! They moved ${direction}`);
     }
     // Movement
@@ -207,7 +209,7 @@ export class AppComponent {
       movement++;
     }
     // TODO move on grid
-    this.moveDirection(3);
+    this.moveDirection(direction);
   }
 
 
