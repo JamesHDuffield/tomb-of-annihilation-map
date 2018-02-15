@@ -22,9 +22,10 @@ export class AppComponent {
   canoe = false;
   hexHeight = 13 / 2;
   hexWidth = 11.15;
+  mapZoom = 2;
   position = {
-    y: 0,
-    x: 0
+    y: 33,
+    x: 35
   };
   baseHex = {
     top: 102,

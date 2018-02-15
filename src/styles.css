@@ -40,3 +40,13 @@
   -o-transform: rotate(-120deg);
   transform: rotate(-120deg);
 }
+
+.wrapper {
+  width: 1000px;
+  height: 1000px;
+  overflow: hidden;
+}
+
+.map-container {
+  position: relative;
+}

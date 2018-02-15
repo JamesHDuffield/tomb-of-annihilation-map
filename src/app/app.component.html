@@ -121,12 +121,15 @@
   <hr>
   <input type="button" class="btn" value="End Day" (click)="endDay('normal')">
   <hr>
-  <div class="text-left">
-    <div class="icon-position" [style.top]="baseHex.top + (position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (position.x * hexWidth) + 'px'">
-      <i class="fa fa-times icon-red icon-position"></i>
+  <div class="wrapper">
+    <div class="text-left map-container" [style.left]="-(position.x * hexWidth) + 'px'" [style.top]="-(position.y * hexHeight) + 'px'"  [style.zoom]="mapZoom">
+      <div class="icon-position" [style.top]="baseHex.top + (position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (position.x * hexWidth) + 'px'">
+        <i class="fa fa-times icon-red icon-position"></i>
+      </div>
+      <img height="1200" alt="Angular Logo" src="assets/dm.jpg">
     </div>
-    <img height="1200" alt="Angular Logo" src="assets/dm.jpg">
   </div>
+  <hr>
 
 
 </div>
