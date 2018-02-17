@@ -1,0 +1,119 @@
+<div class="container page-container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-sm-4 text-left">Party Members: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="map.partyMembers" type="number">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Food stores: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="map.food" type="number"> rations
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Water stores: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="map.water" type="number"> gallons
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Insect ointment: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="map.ointment" type="number"> applications
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Raincatchers: </div>
+        <div class="col-sm-8 text-left">
+          <input [(ngModel)]="map.raincatchers" type="number">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Survival Modifier: </div>
+        <div class="col-sm-6 text-left">
+          <input [(ngModel)]="map.survival" type="number"> bonus
+        </div>
+        <div class="col-sm-2 text-left"><button (click)="saveToDB()" class="btn">Save</button></div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-4 text-left">Rain: </div>
+        <div class="col-sm-8 text-left">{{ rain }}</div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'slow'" value="Slow pace" (click)="changePace('slow')">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'normal'" value="Normal pace" (click)="changePace('normal')">
+          <input type="button" class="btn" [class.btn-primary]="pace === 'fast'" value="Fast pace" (click)="changePace('fast')">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          <input type="button" class="btn" [class.btn-primary]="!canoe" value="No Canoe" (click)="canoe = false">
+          <input type="button" class="btn" [class.btn-primary]="canoe" value="With Canoe" (click)="canoe = true">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-12">
+          <input *ngFor="let t of terrains" type="button" class="btn btn-margins" [class.btn-primary]="t.name === terrain" [value]="t.name"
+            (click)="terrain = t.name">
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-10 text-center">
+          <button class="btn btn-margins" (click)="endDay(6)">
+            <i class="fa fa-arrow-up fa-rotate--60"></i>
+          </button>
+          <button class="btn btn-margins btn-bump-up" (click)="endDay(1)">
+            <i class="fa fa-arrow-up"></i>
+          </button>
+          <button class="btn btn-margins" (click)="endDay(2)">
+            <i class="fa fa-arrow-up fa-rotate-60"></i>
+          </button>
+        </div>
+        <div class="col-sm-2 text-left">
+          <input type="button" class="btn" [class.btn-primary]="manual" value="Manual" (click)="manual = true">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10 text-center">
+          <button class="btn btn-margins" (click)="endDay(5)">
+            <i class="fa fa-arrow-up fa-rotate--120"></i>
+          </button>
+          <button class="btn btn-margins btn-bump-down" (click)="endDay(4)">
+            <i class="fa fa-arrow-up fa-rotate-180"></i>
+          </button>
+          <button class="btn btn-margins" (click)="endDay(3)">
+            <i class="fa fa-arrow-up fa-rotate-120"></i>
+          </button>
+        </div>
+        <div class="col-sm-2 text-left">
+          <input type="button" class="btn" [class.btn-primary]="!manual" value="Auto" (click)="manual = false">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="wrapper">
+        <div class="text-left map-container" [style.left]="-(map.position.x * hexWidth) + 'px'" [style.top]="-(map.position.y * hexHeight) + 'px'"
+          [style.zoom]="mapZoom">
+          <div class="icon-position" [style.top]="baseHex.top + (map.position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (map.position.x * hexWidth) + 'px'">
+            <i class="fa fa-times icon-red icon-position"></i>
+          </div>
+          <img height="1200" alt="MapImage" src="https://s3-ap-southeast-2.amazonaws.com/media.tombofannihilation/dm.jpg">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="alert alert-danger" role="alert" *ngFor='let alert of alerts'>{{ alert }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

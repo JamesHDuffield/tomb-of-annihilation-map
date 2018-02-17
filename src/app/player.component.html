@@ -1,0 +1,57 @@
+<div class="container page-container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-sm-4 text-left">Party Members: </div>
+        <div class="col-sm-8 text-left">
+          {{ map.partyMembers}}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Food stores: </div>
+        <div class="col-sm-8 text-left">
+         {{ map.food }} rations
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Water stores: </div>
+        <div class="col-sm-8 text-left">
+          {{ map.water }} gallons
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Insect ointment: </div>
+        <div class="col-sm-8 text-left">
+          {{ map.ointment }} applications
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Raincatchers: </div>
+        <div class="col-sm-8 text-left">
+          {{ map.raincatchers }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Survival Modifier: </div>
+        <div class="col-sm-6 text-left">
+          {{ map.survival }} bonus
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-left">Rain: </div>
+        <div class="col-sm-8 text-left">{{ rain }}</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="wrapper">
+        <div class="text-left map-container" [style.left]="-(map.position.x * hexWidth) + 'px'" [style.top]="-(map.position.y * hexHeight) + 'px'"
+          [style.zoom]="mapZoom">
+          <div class="icon-position" [style.top]="baseHex.top + (map.position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (map.position.x * hexWidth) + 'px'">
+            <i class="fa fa-times icon-red icon-position"></i>
+          </div>
+          <img height="1200" alt="MapImage" src="https://s3-ap-southeast-2.amazonaws.com/media.tombofannihilation/player.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
