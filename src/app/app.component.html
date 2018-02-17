@@ -5,38 +5,39 @@
       <div class="row">
         <div class="col-sm-4 text-left">Party Members: </div>
         <div class="col-sm-8 text-left">
-          <input [(ngModel)]="partyMembers" type="number">
+          <input [(ngModel)]="map.partyMembers" type="number">
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4 text-left">Food stores: </div>
         <div class="col-sm-8 text-left">
-          <input [(ngModel)]="food" type="number"> rations
+          <input [(ngModel)]="map.food" type="number"> rations
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4 text-left">Water stores: </div>
         <div class="col-sm-8 text-left">
-          <input [(ngModel)]="water" type="number"> gallons
+          <input [(ngModel)]="map.water" type="number"> gallons
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4 text-left">Insect ointment: </div>
         <div class="col-sm-8 text-left">
-          <input [(ngModel)]="ointment" type="number"> applications
+          <input [(ngModel)]="map.ointment" type="number"> applications
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4 text-left">Raincatchers: </div>
         <div class="col-sm-8 text-left">
-          <input [(ngModel)]="raincatchers" type="number">
+          <input [(ngModel)]="map.raincatchers" type="number">
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4 text-left">Survival Modifier: </div>
-        <div class="col-sm-8 text-left">
-          <input [(ngModel)]="survival" type="number"> bonus
+        <div class="col-sm-6 text-left">
+          <input [(ngModel)]="map.survival" type="number"> bonus
         </div>
+        <div class="col-sm-2 text-left"><button (click)="saveToDB()" class="btn">Save</button></div>
       </div>
       <hr>
       <div class="row">
@@ -95,9 +96,9 @@
     </div>
     <div class="col-md-6">
       <div class="wrapper">
-        <div class="text-left map-container" [style.left]="-(position.x * hexWidth) + 'px'" [style.top]="-(position.y * hexHeight) + 'px'"
+        <div class="text-left map-container" [style.left]="-(map.position.x * hexWidth) + 'px'" [style.top]="-(map.position.y * hexHeight) + 'px'"
           [style.zoom]="mapZoom">
-          <div class="icon-position" [style.top]="baseHex.top + (position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (position.x * hexWidth) + 'px'">
+          <div class="icon-position" [style.top]="baseHex.top + (map.position.y * hexHeight) + 'px'" [style.left]="baseHex.left + (map.position.x * hexWidth) + 'px'">
             <i class="fa fa-times icon-red icon-position"></i>
           </div>
           <img height="1200" alt="Angular Logo" src="assets/dm.jpg">

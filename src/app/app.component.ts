@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import * as _ from 'lodash';
-import { AngularFirestore } from 'angularfire2/firestore';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -10,28 +11,31 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class AppComponent {
   title = 'ToA';
   alerts = [];
-  width = 100;
-  height = 200;
-  partyMembers = 4;
-  food = 10;
-  water = 200;
-  ointment = 100;
-  raincatchers = 4;
-  terrain = 'Jungle (No Undead)';
-  survival = 3;
+  map: any = { position: {}};
+  
   canoe = false;
   hexHeight = 13 / 2;
   hexWidth = 11.15;
   mapZoom = 2;
-  position = {
-    y: 33,
-    x: 35
-  };
   baseHex = {
     top: 102,
     left: 96
   };
   pace = 'normal';
+  rain = 'Light';
+  mapObservable: any;
+
+  constructor(private db: AngularFireDatabase) {
+    db.object('map').valueChanges()
+      .subscribe((map: any) => {
+        this.map = map;
+      });
+  }
+
+  saveToDB() {
+    this.db.object('map').set(this.map);
+  }
+
 
   terrains = [
     {
@@ -85,10 +89,6 @@ export class AppComponent {
       difficulty: 15,
     }];
 
-  rain = 'Light';
-
-  constructor(db: AngularFirestore) {}
-
   rollDX(x: number) {
     return Math.floor(Math.random() * x) + 1;
   }
@@ -102,7 +102,7 @@ export class AppComponent {
   }
 
   currentTerrain() {
-    return _.find(this.terrains, t => t.name === this.terrain);
+    return _.find(this.terrains, t => t.name === this.map.terrain);
   }
 
   lookupEncounter() {
@@ -120,26 +120,26 @@ export class AppComponent {
   moveDirection(direction: number) {
     switch (direction) {
       case 1: // North
-        this.position.y -= 2;
+        this.map.position.y -= 2;
         return;
       case 2: // North-east
-        this.position.y -= 1;
-        this.position.x += 1;
+        this.map.position.y -= 1;
+        this.map.position.x += 1;
         return;
       case 3: // South-east
-        this.position.y += 1;
-        this.position.x += 1;
+        this.map.position.y += 1;
+        this.map.position.x += 1;
         return;
       case 4: // South
-        this.position.y += 2;
+        this.map.position.y += 2;
         return;
       case 5: // South-west
-        this.position.y += 1;
-        this.position.x -= 1;
+        this.map.position.y += 1;
+        this.map.position.x -= 1;
         return;
       case 6:
-        this.position.y -= 1;
-        this.position.x -= 1;
+        this.map.position.y -= 1;
+        this.map.position.x -= 1;
     }
   }
 
@@ -156,30 +156,30 @@ export class AppComponent {
     // Rain
     if (this.rollDX(4) === 4) {
       this.rain = 'Heavy';
-      this.water += this.raincatchers;
+      this.map.water += this.map.raincatchers;
     } else {
       this.rain = 'Light';
     }
     // Insects
-    this.ointment -= this.partyMembers;
-    if (this.ointment < 0) {
-      this.alerts.push(`${this.ointment * -1} player(s) have no insect repellant!`);
-      this.ointment = 0;
+    this.map.ointment -= this.map.partyMembers;
+    if (this.map.ointment < 0) {
+      this.alerts.push(`${this.map.ointment * -1} player(s) have no insect repellant!`);
+      this.map.ointment = 0;
     }
     // Water
-    this.water -= (this.partyMembers * 2);
-    if (this.water < 0) {
-      this.alerts.push(`${Math.round(this.water * -1 / 2)} player(s) have not enough water!`);
-      this.water = 0;
+    this.map.water -= (this.map.partyMembers * 2);
+    if (this.map.water < 0) {
+      this.alerts.push(`${Math.round(this.map.water * -1 / 2)} player(s) have not enough water!`);
+      this.map.water = 0;
     }
     // Food
-    this.food -= this.partyMembers;
-    if (this.food < 0) {
-      this.alerts.push(`${this.food * -1} player(s) have not enough food!`);
-      this.food = 0;
+    this.map.food -= this.map.partyMembers;
+    if (this.map.food < 0) {
+      this.alerts.push(`${this.map.food * -1} player(s) have not enough food!`);
+      this.map.food = 0;
     }
     // Survival
-    const roll = this.rollDX(20) + this.survival;
+    const roll = this.rollDX(20) + this.map.survival;
     let DC = this.currentTerrain().difficulty;
     if (this.pace === 'slow') { DC -= 5; }
     if (this.pace === 'fast') { DC += 5; }
@@ -200,8 +200,10 @@ export class AppComponent {
     if (this.canoe) {
       movement++;
     }
-    // TODO move on grid
+    
     this.moveDirection(direction);
+
+    this.saveToDB();
   }
 
 
