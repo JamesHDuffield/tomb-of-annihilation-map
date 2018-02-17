@@ -10,7 +10,6 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class AppComponent {
   title = 'ToA';
   alerts = [];
-  grid = [];
   width = 100;
   height = 200;
   partyMembers = 4;
@@ -88,14 +87,7 @@ export class AppComponent {
 
   rain = 'Light';
 
-  constructor(db: AngularFirestore) {
-    for (let x = 0; x < this.width; x++) {
-      this.grid.push([]);
-      for (let y = 0; y < this.height; y++) {
-        this.grid[x].push(Math.random() >= 0.5);
-      }
-    }
-  }
+  constructor(db: AngularFirestore) {}
 
   rollDX(x: number) {
     return Math.floor(Math.random() * x) + 1;
