@@ -12,7 +12,7 @@ export class AppComponent {
   title = 'ToA';
   alerts = [];
   map: any = { position: {}};
-  
+  manual = false;
   canoe = false;
   hexHeight = 13 / 2;
   hexWidth = 11.15;
@@ -148,57 +148,62 @@ export class AppComponent {
   }
 
   endDay(desiredDirection: number) {
-    this.alerts = [];
-    // Encounters
-    this.rollForEncounter('Morning');
-    this.rollForEncounter('Afternoon');
-    this.rollForEncounter('Evening');
-    // Rain
-    if (this.rollDX(4) === 4) {
-      this.rain = 'Heavy';
-      this.map.water += this.map.raincatchers;
-    } else {
-      this.rain = 'Light';
-    }
-    // Insects
-    this.map.ointment -= this.map.partyMembers;
-    if (this.map.ointment < 0) {
-      this.alerts.push(`${this.map.ointment * -1} player(s) have no insect repellant!`);
-      this.map.ointment = 0;
-    }
-    // Water
-    this.map.water -= (this.map.partyMembers * 2);
-    if (this.map.water < 0) {
-      this.alerts.push(`${Math.round(this.map.water * -1 / 2)} player(s) have not enough water!`);
-      this.map.water = 0;
-    }
-    // Food
-    this.map.food -= this.map.partyMembers;
-    if (this.map.food < 0) {
-      this.alerts.push(`${this.map.food * -1} player(s) have not enough food!`);
-      this.map.food = 0;
-    }
-    // Survival
-    const roll = this.rollDX(20) + this.map.survival;
-    let DC = this.currentTerrain().difficulty;
-    if (this.pace === 'slow') { DC -= 5; }
-    if (this.pace === 'fast') { DC += 5; }
 
     let direction = desiredDirection;
-    if (roll < DC) {
-      // Lost
-      direction = this.rollDX(6);
-      this.alerts.push(`Navigation failed and the players are lost! They moved ${direction}`);
-    }
-    // Movement
-    let movement = 1;
-    if (this.pace === 'fast' && this.rollDX(4) >= 3) {
-      movement++;
-    } else if (this.pace === 'slow' && this.rollDX(4) <= 2) {
-      movement--;
-    }
-    if (this.canoe) {
-      movement++;
+    
+    if (!this.manual) {
+
+      this.alerts = [];
+      // Encounters
+      this.rollForEncounter('Morning');
+      this.rollForEncounter('Afternoon');
+      this.rollForEncounter('Evening');
+      // Rain
+      if (this.rollDX(4) === 4) {
+        this.rain = 'Heavy';
+        this.map.water += this.map.raincatchers;
+      } else {
+        this.rain = 'Light';
+      }
+      // Insects
+      this.map.ointment -= this.map.partyMembers;
+      if (this.map.ointment < 0) {
+        this.alerts.push(`${this.map.ointment * -1} player(s) have no insect repellant!`);
+        this.map.ointment = 0;
+      }
+      // Water
+      this.map.water -= (this.map.partyMembers * 2);
+      if (this.map.water < 0) {
+        this.alerts.push(`${Math.round(this.map.water * -1 / 2)} player(s) have not enough water!`);
+        this.map.water = 0;
+      }
+      // Food
+      this.map.food -= this.map.partyMembers;
+      if (this.map.food < 0) {
+        this.alerts.push(`${this.map.food * -1} player(s) have not enough food!`);
+        this.map.food = 0;
+      }
+      // Survival
+      const roll = this.rollDX(20) + this.map.survival;
+      let DC = this.currentTerrain().difficulty;
+      if (this.pace === 'slow') { DC -= 5; }
+      if (this.pace === 'fast') { DC += 5; }
+
+      if (roll < DC) {
+        // Lost
+        direction = this.rollDX(6);
+        this.alerts.push(`Navigation failed and the players are lost! They moved ${direction}`);
+      }
+      // Movement
+      let movement = 1;
+      if (this.pace === 'fast' && this.rollDX(4) >= 3) {
+        movement++;
+      } else if (this.pace === 'slow' && this.rollDX(4) <= 2) {
+        movement--;
+      }
+      if (this.canoe) {
+        movement++;
+      }
     }
     
     this.moveDirection(direction);
