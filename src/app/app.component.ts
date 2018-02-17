@@ -86,7 +86,6 @@ export class AppComponent {
     }];
 
   rain = 'Light';
-  encounters = [];
 
   constructor() {
     for (let x = 0; x < this.width; x++) {
@@ -121,7 +120,7 @@ export class AppComponent {
 
   rollForEncounter(timeframe: string) {
     if (this.rollDX(20) >= 18) {
-      this.encounters.push(`${timeframe}: ${this.lookupEncounter()}`);
+      this.alerts.push(`Encounter at ${timeframe}: ${this.lookupEncounter()}`);
     }
   }
 
@@ -158,7 +157,6 @@ export class AppComponent {
   endDay(desiredDirection: number) {
     this.alerts = [];
     // Encounters
-    this.encounters = [];
     this.rollForEncounter('Morning');
     this.rollForEncounter('Afternoon');
     this.rollForEncounter('Evening');

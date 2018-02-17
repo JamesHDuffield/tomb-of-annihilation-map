@@ -43,17 +43,6 @@
         <div class="col-sm-4 text-left">Rain: </div>
         <div class="col-sm-8 text-left">{{ rain }}</div>
       </div>
-      <div class="row">
-        <div class="col-sm-4 text-left">Encounters: </div>
-        <div class="col-sm-8 text-left">
-          <div *ngIf='!encounters.length'>No encounters
-            <br>
-          </div>
-          <div *ngFor='let encounter of encounters'>{{ encounter }}
-            <br>
-          </div>
-        </div>
-      </div>
       <hr>
       <div class="row">
         <div class="col-sm-12">
