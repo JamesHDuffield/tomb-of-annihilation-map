@@ -18,7 +18,6 @@ export class PlayerComponent {
     top: 102,
     left: 96
   };
-  rain = 'Light';
   mapObservable: any;
 
   constructor(private db: AngularFireDatabase) {

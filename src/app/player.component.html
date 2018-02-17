@@ -1,45 +1,59 @@
 <div class="container page-container">
   <div class="row">
     <div class="col-md-6">
-      <div class="row">
-        <div class="col-sm-4 text-left">Party Members: </div>
-        <div class="col-sm-8 text-left">
-          {{ map.partyMembers}}
+      <div class="alert alert-info">
+        <div class="row">
+          <div class="col-sm-4 text-left">Party Members: </div>
+          <div class="col-sm-8 text-left">
+            {{ map.partyMembers}}
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-4 text-left">Food stores: </div>
-        <div class="col-sm-8 text-left">
-         {{ map.food }} rations
+      <div class="alert alert-warning">
+
+        <div class="row">
+          <div class="col-sm-4 text-left">Food stores: </div>
+          <div class="col-sm-8 text-left">
+            {{ map.food }} rations
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 text-left">Water stores: </div>
+          <div class="col-sm-8 text-left">
+            {{ map.water }} gallons
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 text-left">Insect ointment: </div>
+          <div class="col-sm-8 text-left">
+            {{ map.ointment }} applications
+          </div>
+        </div>
+
+      </div>
+      <div class="alert alert-info">
+        <div class="row">
+          <div class="col-sm-4 text-left">Raincatchers: </div>
+          <div class="col-sm-8 text-left">
+            {{ map.raincatchers }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 text-left">Survival Modifier: </div>
+          <div class="col-sm-6 text-left">
+            +{{ map.survival }} bonus
+          </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-4 text-left">Water stores: </div>
-        <div class="col-sm-8 text-left">
-          {{ map.water }} gallons
+      <div class="alert alert-info">
+        <div class="row">
+          <div class="col-sm-4 text-left">Rain: </div>
+          <div class="col-sm-8 text-left">{{ map.rain }}</div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 text-left">Insect ointment: </div>
-        <div class="col-sm-8 text-left">
-          {{ map.ointment }} applications
+        <div class="row">
+          <div class="col-sm-4 text-left">Terrain: </div>
+          <div class="col-sm-8 text-left">{{ map.terrain }}</div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 text-left">Raincatchers: </div>
-        <div class="col-sm-8 text-left">
-          {{ map.raincatchers }}
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 text-left">Survival Modifier: </div>
-        <div class="col-sm-6 text-left">
-          {{ map.survival }} bonus
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 text-left">Rain: </div>
-        <div class="col-sm-8 text-left">{{ rain }}</div>
       </div>
     </div>
     <div class="col-md-6">

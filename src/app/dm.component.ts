@@ -22,7 +22,6 @@ export class DMComponent {
     left: 96
   };
   pace = 'normal';
-  rain = 'Light';
   mapObservable: any;
 
   constructor(private db: AngularFireDatabase) {
@@ -160,10 +159,10 @@ export class DMComponent {
       this.rollForEncounter('Evening');
       // Rain
       if (this.rollDX(4) === 4) {
-        this.rain = 'Heavy';
+        this.map.rain = 'Heavy';
         this.map.water += this.map.raincatchers;
       } else {
-        this.rain = 'Light';
+        this.map.rain = 'Light';
       }
       // Insects
       this.map.ointment -= this.map.partyMembers;
