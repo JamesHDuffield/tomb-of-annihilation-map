@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as _ from 'lodash';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-root',
@@ -87,7 +88,7 @@ export class AppComponent {
 
   rain = 'Light';
 
-  constructor() {
+  constructor(db: AngularFirestore) {
     for (let x = 0; x < this.width; x++) {
       this.grid.push([]);
       for (let y = 0; y < this.height; y++) {

@@ -4,5 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyCk_TRkcDff8fqDVzJs7HiZuNP021zxg-Y',
+    databaseURL: 'https://tomb-of-annihilation-map.firebaseio.com',
+    projectId: 'tomb-of-annihilation-map'
+  }
 };
