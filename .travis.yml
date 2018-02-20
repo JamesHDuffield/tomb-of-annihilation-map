@@ -5,11 +5,8 @@ node_js:
 script:
   - npm run build
 
-after_script: "ls dist"
-
-before_deploy: "ls dist"
-
 deploy:
+  skip_cleanup: true
   provider: firebase
   token:
     secure: "Qte5BL6t/AJw97/sZYK71AYr36fUocK2dYf53n6XLREAUNpAIidnzR6gHrL2VsmXkZrzdQn1Tx58R+paRbWYZ5VMZMkklTzKg38PUW3RbPSMFhemsk4cWM6EuhSivMA/fpCvaPVx7UFoA+QXc1bPlteaqUL+6uKJrF/X4Bctdy3g7PeI1GL5ec5GxnmsC6E9AqHBlqffZnqhPR+aoh2AAqeJb7PaIaSizbvSWjVjYr3ral6UjopgZxrtA4YZT1iHZZUx/FrMk3vhSqhTBKaTggCr6NckpwNlGF9HXmAAvBGiy5R+ijxc7zt41yKQ3gVWdDCOb9cI/1MEiAp8HSEbSnm5Q9LqVF2MSczNOP8EEERFUH8fIXiQhmlJwZmj0JTCtXzwAE0mzHPq62DKOcv0BI75Uz1DpAgwQtvSJMDvf8vqbsfpkFcb6mH/ppcKcws4vuj3vymoy3j0lAn+kuUvqIvFQQVBdVr1g4mMEhvO/XJNM3/N1vLX3JcjqM4GjKva2cAcWEvGJflc8+iEMzYN6UEtnfWhzS3ECvQ9GmpG3fkNL1OlzmTNVpFLlKC+wIYLu8rMJAeHAJMit7tutWeZ3S8HD9E8GWVvyV76Pr6qHzmjh87Em0bnf2ag3xcv9rap36guVvvFz997qGruKQVI8e6lcjG/qeirVhhumxpK2OM="
