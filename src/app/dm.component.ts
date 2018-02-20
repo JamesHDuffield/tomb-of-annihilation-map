@@ -23,19 +23,6 @@ export class DMComponent {
   };
   pace = 'normal';
   mapObservable: any;
-
-  constructor(private db: AngularFireDatabase) {
-    db.object('map').valueChanges()
-      .subscribe((map: any) => {
-        this.map = map;
-      });
-  }
-
-  saveToDB() {
-    this.db.object('map').set(this.map);
-  }
-
-
   terrains = [
     {
       id: 1,
@@ -87,6 +74,17 @@ export class DMComponent {
       encounter: [ {name: 'Artus Cimber', min: 1 , max: 1 }, {name: 'Cache', min: 2 , max: 5 }, {name: 'Dragon, red', min: 6 , max: 9 }, {name: 'Explorer, dead', min: 10 , max: 18 }, {name: 'Explorers', min: 19 , max: 19 }, {name: 'Firenewts', min: 20 , max: 37 }, {name: 'Giant scorpions', min: 38 , max: 45 }, {name: 'Magmins', min: 46 , max: 54 }, {name: 'Mephits', min: 55 , max: 71 }, {name: 'Night hag', min: 72 , max: 78 }, {name: 'Statue of Ubtao', min: 79 , max: 79 }, {name: 'Troll', min: 80 , max: 83 }, {name: 'Undead, ghouls', min: 84 , max: 85 }, {name: 'Undead, skeletons', min: 86 , max: 95 }, {name: 'Undead, wight', min: 96 , max: 97 }, {name: 'Undead, zombies', min: 98 , max: 98 }, {name: 'Zhentarim', min: 99 , max: 100 } ],
       difficulty: 15,
     }];
+
+  constructor(private db: AngularFireDatabase) {
+    db.object('map').valueChanges()
+      .subscribe((map: any) => {
+        this.map = map;
+      });
+  }
+
+  saveToDB() {
+    this.db.object('map').set(this.map);
+  }
 
   rollDX(x: number) {
     return Math.floor(Math.random() * x) + 1;
@@ -149,7 +147,7 @@ export class DMComponent {
   endDay(desiredDirection: number) {
 
     let direction = desiredDirection;
-    
+
     if (!this.manual) {
 
       this.alerts = [];
@@ -204,7 +202,7 @@ export class DMComponent {
         movement++;
       }
     }
-    
+
     this.moveDirection(direction);
 
     this.saveToDB();
